@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "api-upgrade-agent"
+version = "0.1.0"
+description = "Multi-agent API dependency upgrade & compatibility repair system"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "api-upgrade-agent"}]
+dependencies = [
+    "anthropic>=0.70.0",
+]
+[project.optional-dependencies]
+toml = ["tomli>=2.0.0 ; python_version < '3.11'"]
+dev = ["pytest>=7", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+api-upgrade-agent = "cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
